@@ -134,8 +134,6 @@ contract upgradeStakeTest is Helper {
         stakeBooster.stake(three_months);
         vm.stopPrank();
 
-        vm.warp(block.timestamp + three_months);
-
         //pause
         vm.startPrank(owner);
         stakeBooster.pause();
@@ -147,7 +145,7 @@ contract upgradeStakeTest is Helper {
         stakeBooster.upgradeStake(six_months);
         vm.stopPrank();
 
-        assertEq(stakeBooster.wallet_stakeEndTimer(user), block.timestamp + six_months);
-        assertEq(stakeBooster.wallet_stakeTimeType(user), six_months);
+        assertEq(stakeBooster.wallet_stakeEndTimer(user), block.timestamp + six_months, "stake end timer");
+        assertEq(stakeBooster.wallet_stakeTimeType(user), six_months, "stake time type");
     }
 }
