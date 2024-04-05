@@ -10,7 +10,7 @@ import {BoosterSingularity} from "../src/booster/BoosterSingularity.sol";
 
 //forge script StakeScript --broadcast --rpc-url $RPC_URL --verify --etherscan-api-key $ETHERSCAN_API --private-key $PRIVATE_KEY
 contract StakeScript is Script {
-    address sophToken = 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380; // = address(0x1); TODO: replace with actual address
+    address sophToken = 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380;
     string uriSingularity3 =
         "https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/13.json";
     string uriSingularity6 =
