@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import {StakeBooster, Pausable} from "../src/StakeBooster.sol";
+import {StakeBooster, Pausable, Ownable} from "../src/StakeBooster.sol";
 import {MockERC20, Helper} from "./Helper.t.sol";
 
 contract StakeTest is Helper {
@@ -151,14 +151,14 @@ contract StakeTest is Helper {
 
     function test_cant_pause() public {
         vm.startPrank(user);
-        vm.expectRevert("Only owner can call this function");
+        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, user));
         stakeBooster.pause();
         vm.stopPrank();
     }
 
     function test_cant_unpause() public {
         vm.startPrank(user);
-        vm.expectRevert("Only owner can call this function");
+        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, user));
         stakeBooster.unpause();
         vm.stopPrank();
     }

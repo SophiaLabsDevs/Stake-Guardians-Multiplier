@@ -10,20 +10,15 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract StakeBooster is ERC1155, ReentrancyGuard, Pausable {
+contract StakeBooster is ERC1155, ReentrancyGuard, Pausable, Ownable {
     //address of soph token
     address public soph;
     uint256 public minimumAmount;
     string public uri3;
     string public uri6;
     string public uri12;
-    address private owner;
-
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner can call this function");
-        _;
-    }
 
     //mapping of address to stake time
     mapping(address => uint256 time) public wallet_stakeEndTimer;
@@ -47,7 +42,7 @@ contract StakeBooster is ERC1155, ReentrancyGuard, Pausable {
         string memory _uri6,
         string memory _uri12,
         address _owner
-    ) ERC1155("") {
+    ) ERC1155("") Ownable(_owner) {
         require(_soph != address(0), "Invalid address");
 
         //set soph token address
@@ -58,7 +53,6 @@ contract StakeBooster is ERC1155, ReentrancyGuard, Pausable {
         uri3 = _uri3;
         uri6 = _uri6;
         uri12 = _uri12;
-        owner = _owner;
     }
 
     ///@notice function to pause the contract

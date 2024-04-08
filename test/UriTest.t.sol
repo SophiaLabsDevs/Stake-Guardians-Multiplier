@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import {StakeBooster} from "../src/StakeBooster.sol";
+import {StakeBooster, Ownable} from "../src/StakeBooster.sol";
 import {MockERC20, Helper} from "./Helper.t.sol";
 
 contract UriTest is Helper {
@@ -27,10 +27,11 @@ contract UriTest is Helper {
     }
 
     function test_cant_set_uris() public {
-        //vm.prank(owner);
-        vm.expectRevert("Only owner can call this function");
+        vm.startPrank(user);
+        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, user));
         stakeBooster.setURIs("newURI3", "newURI6", "newURI12");
-        vm.prank(user);
+        vm.stopPrank();
+
         assertEq(stakeBooster.uri(3), "testURI3");
         assertEq(stakeBooster.uri(6), "testURI6");
         assertEq(stakeBooster.uri(12), "testURI12");

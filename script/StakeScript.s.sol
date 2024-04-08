@@ -9,6 +9,13 @@ import {BoosterTranscendence} from "../src/booster/BoosterTranscendence.sol";
 import {BoosterSingularity} from "../src/booster/BoosterSingularity.sol";
 
 //forge script StakeScript --broadcast --rpc-url $RPC_URL --verify --etherscan-api-key $ETHERSCAN_API --private-key $PRIVATE_KEY
+
+//forge verify-contract 0x0B690a21F53dc76d66a843a65a6A00e0Bc0aFFaE BoosterBronze --chain-id 56 --etherscan-api-key $BSCSCAN_API --constructor-args $(cast abi-encode "constructor(address,string,string,string,address)" 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380 https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/1.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/2.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/3.json 0x508aF7D60430DD2ef94E289206b5008902A3ec3f)
+//forge verify-contract 0x548faa03f4B13Cd8EE22F92752f4D457Bbefbdd6 BoosterGold --chain-id 56 --etherscan-api-key $BSCSCAN_API --constructor-args $(cast abi-encode "constructor(address,string,string,string,address)" 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380 https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/4.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/5.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/6.json 0x508aF7D60430DD2ef94E289206b5008902A3ec3f)
+//forge verify-contract 0x8c781A21fC4881C04fA73BBCbFb8A4a4A7aA3061 BoosterDiamond --chain-id 56 --etherscan-api-key $BSCSCAN_API --constructor-args $(cast abi-encode "constructor(address,string,string,string,address)" 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380 https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/7.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/8.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/9.json 0x508aF7D60430DD2ef94E289206b5008902A3ec3f)
+//forge verify-contract 0x98d722E1963C823d06F43d4294320B47Aa761041 BoosterTranscendence --chain-id 56 --etherscan-api-key $BSCSCAN_API --constructor-args $(cast abi-encode "constructor(address,string,string,string,address)" 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380 https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/10.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/11.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/12.json 0x508aF7D60430DD2ef94E289206b5008902A3ec3f)
+//forge verify-contract 0x6E59be7E8caa02D52270a520410dc22c7B5944E5 BoosterSingularity --chain-id 56 --etherscan-api-key $BSCSCAN_API --constructor-args $(cast abi-encode "constructor(address,string,string,string,address)" 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380 https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/13.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/14.json https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/15.json 0x508aF7D60430DD2ef94E289206b5008902A3ec3f)
+
 contract StakeScript is Script {
     address sophToken = 0x73fBD93bFDa83B111DdC092aa3a4ca77fD30d380;
     string uriSingularity3 =
@@ -38,7 +45,7 @@ contract StakeScript is Script {
         "https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/2.json";
     string uriBronze12 =
         "https://bafybeiapjqljlvbypsz7pnch2r4pbcgkwirpq4xygogmlcozw47overw3q.ipfs.nftstorage.link/3.json";
-    address owner = 0x508aF7D60430DD2ef94E289206b5008902A3ec3f;
+    address owner = 0x027a5cE58fc466D0e3A9D1990404354029398541;
 
     function run()
         public
