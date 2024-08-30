@@ -67,6 +67,20 @@ contract StakeBooster is ERC1155, ReentrancyGuard, Pausable, Ownable {
         _unpause();
     }
 
+    ///@notice function to mint nfts
+    ///@param id mint id = 3 for 90 days stake, mint id = 6 for 180 days stake, mint id = 12 for 360 days stake
+    ///@param amount amount of nfts to mint, should be equal to the minimum amount of soph tokens
+    function mint(address account, uint256 id, uint256 amount) external onlyOwner {
+        _mint(account, id, amount, "");
+    }
+
+    ///@notice function to burn nfts
+    ///@param id mint id = 3 for 90 days stake, mint id = 6 for 180 days stake, mint id = 12 for 360 days stake
+    ///@param amount amount of nfts to burn, should be equal to the minimum amount of soph tokens
+    function burn(address account, uint256 id, uint256 amount) external onlyOwner {
+        _burn(account, id, amount);
+    }
+
     ///@notice function to stake soph tokens
     ///@param _timeType time type of the stake, either 90, 180 or 360 days
     ///@dev the user must not have a stake already
